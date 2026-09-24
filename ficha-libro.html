@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>[Título del libro] · Ediciones Intracom</title>
+<!-- Google Scholar: una ficha por obra y otra por capítulo (en capítulos añadir citation_inbook_title) -->
+<meta name="citation_title" content="[PENDIENTE título]">
+<meta name="citation_author" content="[PENDIENTE Apellido, Nombre]">
+<meta name="citation_publication_date" content="[PENDIENTE AAAA/MM/DD]">
+<meta name="citation_publisher" content="Ediciones Intracom">
+<meta name="citation_isbn" content="[PENDIENTE ISBN PDF]">
+<meta name="citation_doi" content="[PENDIENTE 10.xxxx/xxxx]">
+<meta name="citation_pdf_url" content="[PENDIENTE URL absoluta del PDF]">
+<meta name="citation_language" content="es">
+<meta name="citation_keywords" content="[PENDIENTE palabras clave]">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Book","name":"[PENDIENTE título]","author":[{"@type":"Person","name":"[PENDIENTE]","affiliation":"[PENDIENTE]","identifier":"https://orcid.org/[PENDIENTE]"}],"publisher":{"@type":"Organization","name":"Ediciones Intracom"},"isbn":"[PENDIENTE]","identifier":{"@type":"PropertyValue","propertyID":"DOI","value":"[PENDIENTE]"},"datePublished":"[PENDIENTE]","inLanguage":"es","isAccessibleForFree":true,"license":"[PENDIENTE URL licencia CC]","isPartOf":{"@type":"BookSeries","name":"Estudios de Comunicación"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="ediciones.css">
+<style>
+.crumbs{font-size:13.5px;color:var(--muted);display:flex;gap:8px;flex-wrap:wrap;margin:28px 0 36px}
+.crumbs a{color:var(--muted)}
+.fk{display:grid;grid-template-columns:320px minmax(0,1fr);gap:clamp(30px,5vw,72px);align-items:start;padding-bottom:90px}
+.fk-side{position:sticky;top:calc(var(--navh) + 24px);display:flex;flex-direction:column;gap:12px}
+.fk-cover{--cc:var(--c-com);aspect-ratio:2/3;border-radius:4px 12px 12px 4px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 2px 3px rgba(0,0,0,.06),0 40px 70px -34px rgba(10,20,30,.55);position:relative;background:var(--surface)}
+.fk-cover::before{content:"";position:absolute;left:0;top:0;bottom:0;width:10px;background:linear-gradient(90deg,rgba(0,0,0,.18),transparent);z-index:2}
+.fk-cover .top{background:var(--cc);color:#fff;flex:0 0 58%;padding:24px 24px 20px 30px;display:flex;flex-direction:column;justify-content:space-between}
+.fk-cover .top small{font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;opacity:.85}
+.fk-cover .top b{font-family:var(--font-serif);font-weight:500;font-size:28px;line-height:1.08}
+.fk-cover .bot{flex:1;padding:18px 24px 20px 30px;display:flex;flex-direction:column;justify-content:space-between;font-size:13px;color:var(--muted)}
+.fk-cover .bot img{height:20px;width:auto;align-self:flex-start}
+.fk-side .btn{width:100%}
+.fk-side .oa{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);justify-content:center}
+.fk-side .oa i{width:9px;height:9px;border-radius:50%;background:var(--orange)}
+.fk h1{font-family:var(--font-serif);font-weight:500;font-size:clamp(34px,4.2vw,54px);letter-spacing:-.02em;line-height:1.04;text-wrap:balance}
+.fk .subt{font-family:var(--font-serif);font-style:italic;font-size:clamp(20px,2vw,26px);color:var(--muted);margin:10px 0 0;line-height:1.25}
+.fk .en-t{font-size:15px;color:var(--muted);margin:14px 0 0}
+.fk .en-t b{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;font-weight:500;margin-right:8px}
+.authors{display:flex;flex-direction:column;gap:10px;margin:28px 0 0;padding:20px 0;border-block:1px solid var(--border)}
+.author{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px}
+.author b{font-size:17px}
+.author span{font-size:14.5px;color:var(--muted)}
+.fk-sec{margin-top:44px}
+.fk-sec>h2{font-size:22px;letter-spacing:-.02em;margin-bottom:16px;display:flex;align-items:baseline;gap:12px}
+.fk-sec>h2 small{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;font-weight:500;color:var(--muted);text-transform:uppercase}
+.bib{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--surface);overflow:hidden}
+.bib div{padding:14px 18px;border-bottom:1px solid var(--border);border-right:1px solid var(--border);display:flex;flex-direction:column;gap:4px}
+.bib div:nth-child(2n){border-right:0}
+.bib dt{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.bib dd{margin:0;font-size:15px}
+.abs{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.abs h3{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;font-weight:500;color:var(--muted);text-transform:uppercase;margin-bottom:8px}
+.abs p{font-family:var(--font-serif);font-size:17.5px;line-height:1.6;margin:0 0 12px}
+.toc{list-style:none;margin:0;padding:0;border-top:1px solid var(--border)}
+.toc li{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:6px 16px;padding:16px 0;border-bottom:1px solid var(--border);align-items:baseline}
+.toc .n{font-family:var(--font-mono);font-size:12px;color:var(--muted)}
+.toc a.t{font-family:var(--font-serif);font-size:18px;color:var(--ink);text-decoration:none}
+.toc a.t:hover{color:var(--orange-ink)}
+.toc .who{grid-column:2;font-size:14px;color:var(--muted)}
+.toc .doi{grid-row:1/span 2;grid-column:3;font-family:var(--font-mono);font-size:12px;display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.cite{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden}
+.cite-tabs{display:flex;border-bottom:1px solid var(--border);background:var(--surface-2)}
+.cite-tabs button{border:0;background:none;padding:12px 18px;font-weight:600;font-size:14px;cursor:pointer;color:var(--muted);border-bottom:2px solid transparent}
+.cite-tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--orange)}
+.cite-body{padding:18px 20px;display:flex;gap:16px;align-items:flex-start}
+.cite-body p{margin:0;flex:1;font-family:var(--font-serif);font-size:17px;line-height:1.55}
+.review{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden}
+.review div{background:var(--surface);padding:18px 20px}
+.review dt{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.review dd{margin:0;font-size:16px;font-weight:600}
+@media(max-width:900px){.fk{grid-template-columns:1fr}.fk-side{position:static;max-width:340px}.abs,.bib{grid-template-columns:1fr}.bib div{border-right:0}.review{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="nav scrolled" id="nav">
+<div class="container nav-inner">
+<a class="brand" href="index.html" aria-label="Ediciones Intracom — inicio"><img src="logo-ediciones.svg" alt="Intracom Ediciones"></a>
+<nav class="nav-links" id="navLinks" aria-label="Secciones" style="margin-left:auto">
+<a href="index.html#colecciones">Colecciones</a><a href="index.html#catalogo" class="active">Catálogo</a><a href="index.html#revistas">Revistas</a><a href="index.html#publicar">Publicar</a><a href="index.html#politica-editorial">Política editorial</a><a href="index.html#contacto">Contacto</a>
+</nav>
+<div class="nav-tools">
+<div class="lang" role="group" aria-label="Idioma"><button aria-pressed="true">ES</button><button aria-pressed="false">EN</button><button aria-pressed="false">PT</button></div>
+<button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"></path></svg></button>
+</div>
+</div>
+</header>
+<main class="container" data-screen-label="Ficha de libro">
+<nav class="crumbs" aria-label="Ruta"><a href="index.html">Inicio</a><span>/</span><a href="index.html#catalogo">Catálogo</a><span>/</span><a href="index.html#coleccion-estudios-de-comunicacion">Estudios de Comunicación</a><span>/</span><span>Ficha</span></nav>
+<article class="fk">
+<aside class="fk-side">
+<div class="fk-cover"><div class="top"><small>Estudios de Comunicación · Nº 1</small><b>Título del libro</b></div><div class="bot"><span>Nombre Apellido (coord.)</span><img src="logo-ediciones.svg" alt=""></div></div>
+<a class="btn btn-primary btn-lg" href="#">Descargar PDF <span class="arr">↓</span></a>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><a class="btn btn-ghost btn-sm" href="#">ePub</a><a class="btn btn-ghost btn-sm" href="#">Comprar impreso</a></div>
+<p class="oa"><i></i>Acceso abierto · CC <span class="pend" data-pend="Licencia"></span></p>
+</aside>
+<div>
+<p class="lab" style="color:var(--c-com)">Colección Estudios de Comunicación · Obra colectiva · Nº 1</p>
+<h1>Título del libro <span class="pend" data-pend="Título"></span></h1>
+<p class="subt">Subtítulo de la obra <span class="pend" data-pend="Subtítulo"></span></p>
+<p class="en-t"><b>EN</b>Book title in English — Subtitle in English <span class="pend" data-pend="Título en inglés"></span></p>
+<div class="authors">
+<div class="author"><b>Nombre Apellido (coord.)</b><span>Universidad · País</span><span class="orcid"><i></i>0000-0000-0000-0000</span><span class="pend" data-pend="Autoría con afiliación y ORCID"></span></div>
+</div>
+<section class="fk-sec"><h2>Datos bibliográficos</h2>
+<dl class="bib">
+<div><dt>DOI del libro</dt><dd><span class="pend" data-pend="DOI"></span></dd></div>
+<div><dt>Licencia</dt><dd>Creative Commons <span class="pend" data-pend="Licencia"></span></dd></div>
+<div><dt>ISBN papel</dt><dd><span class="pend" data-pend="ISBN papel"></span></dd></div>
+<div><dt>ISBN PDF</dt><dd><span class="pend" data-pend="ISBN PDF"></span></dd></div>
+<div><dt>ISBN ePub</dt><dd><span class="pend" data-pend="ISBN ePub"></span></dd></div>
+<div><dt>Año · páginas</dt><dd><span class="pend" data-pend="Año y páginas"></span></dd></div>
+<div><dt>Idioma</dt><dd>Español</dd></div>
+<div><dt>Colección</dt><dd>Estudios de Comunicación, nº 1 · ISSN <span class="pend" data-pend="ISSN colección"></span></dd></div>
+</dl></section>
+<section class="fk-sec"><h2>Resumen <small>ES · EN</small></h2>
+<div class="abs">
+<div lang="es"><h3>Resumen</h3><p>Texto del resumen en español. <span class="pend" data-pend="Resumen ES"></span></p><h3>Palabras clave</h3><div class="chips" style="--cc:var(--c-com)"><span class="chip">palabra clave</span><span class="chip">palabra clave</span><span class="chip">palabra clave</span></div></div>
+<div lang="en"><h3>Abstract</h3><p>Abstract text in English. <span class="pend" data-pend="Abstract EN"></span></p><h3>Keywords</h3><div class="chips" style="--cc:var(--c-com)"><span class="chip">keyword</span><span class="chip">keyword</span><span class="chip">keyword</span></div></div>
+</div></section>
+<section class="fk-sec"><h2>Índice <small>DOI por capítulo</small></h2>
+<ol class="toc">
+<li><span class="n">00</span><a class="t" href="#">Introducción</a><span class="who">Nombre Apellido</span><span class="doi"><span class="pend" data-pend="DOI capítulo"></span><a href="#">PDF ↓</a></span></li>
+<li><span class="n">01</span><a class="t" href="#">Título del capítulo</a><span class="who">Nombre Apellido · Universidad</span><span class="doi"><span class="pend" data-pend="DOI capítulo"></span><a href="#">PDF ↓</a></span></li>
+<li><span class="n">02</span><a class="t" href="#">Título del capítulo</a><span class="who">Nombre Apellido · Universidad</span><span class="doi"><span class="pend" data-pend="DOI capítulo"></span><a href="#">PDF ↓</a></span></li>
+</ol>
+<p class="mono" style="color:var(--muted);margin-top:10px">Cada capítulo enlaza a su propia página (/capitulo/{slug}) con sus metadatos y su PDF.</p></section>
+<section class="fk-sec"><h2>Cómo citar</h2>
+<div class="cite">
+<div class="cite-tabs" role="tablist"><button role="tab" aria-selected="true" data-c="apa">APA 7</button><button role="tab" aria-selected="false" data-c="alt">Segundo formato <span class="pend" data-pend="Segundo formato de cita (Chicago, ISO 690, MLA…)"></span></button></div>
+<div class="cite-body"><p id="citeText">Apellido, N. (Coord.). (AAAA). <i>Título del libro: Subtítulo</i>. Ediciones Intracom. https://doi.org/10.xxxx/xxxx</p><button class="btn btn-ghost btn-sm" id="copyCite">Copiar</button></div>
+</div></section>
+<section class="fk-sec"><h2>Declaración de revisión</h2>
+<dl class="review">
+<div><dt>Modalidad</dt><dd>Doble ciego externo</dd></div>
+<div><dt>Informes</dt><dd><span class="pend" data-pend="Nº de informes"></span></dd></div>
+<div><dt>Aceptación</dt><dd><span class="pend" data-pend="Fecha de aceptación"></span></dd></div>
+</dl>
+<p style="font-size:14px;color:var(--muted);margin:10px 0 0">Proceso descrito en la <a href="index.html#revision-por-pares">política de revisión por pares</a>.</p></section>
+<section class="fk-sec"><h2>Reseñas</h2>
+<div class="empty"><h4>Aún no hay reseñas publicadas</h4><p style="margin:0">Si has publicado una reseña de esta obra, escríbenos y la enlazaremos aquí.</p></div></section>
+</div>
+</article>
+</main>
+<footer class="footer"><div class="container"><div class="f-bot" style="padding-top:0"><span>© 2026 Ediciones Intracom · Portal Intracom</span><span><a href="#">Aviso legal</a> · <a href="#">Privacidad</a> · <a href="#">Cookies</a></span></div></div></footer>
+<script>
+(function(){
+const t=document.getElementById("navToggle"),n=document.getElementById("navLinks");t.addEventListener("click",()=>{const o=n.classList.toggle("open");t.setAttribute("aria-expanded",o)});
+const C={apa:'Apellido, N. (Coord.). (AAAA). <i>Título del libro: Subtítulo</i>. Ediciones Intracom. https://doi.org/10.xxxx/xxxx',alt:'Formato por definir.'};
+document.querySelectorAll(".cite-tabs button").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".cite-tabs button").forEach(x=>x.setAttribute("aria-selected",x===b));document.getElementById("citeText").innerHTML=C[b.dataset.c]}));
+document.getElementById("copyCite").addEventListener("click",e=>{navigator.clipboard&&navigator.clipboard.writeText(document.getElementById("citeText").innerText);e.target.textContent="Copiado";setTimeout(()=>e.target.textContent="Copiar",1600)});
+})();
+</script>
+</body>
+</html>
