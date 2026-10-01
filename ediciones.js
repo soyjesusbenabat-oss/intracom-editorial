@@ -8,13 +8,15 @@ const P=t=>`<span class="pend" data-pend="${t}"></span>`;
 const COLS=[
 {id:"gen",slug:"coleccion-estudios-de-genero",name:"Estudios de Género",cc:"var(--c-gen)",short:"Relaciones de género, desigualdades, feminismos y diversidad en el espacio iberoamericano.",
 def:"Investigación sobre las relaciones de género en las sociedades contemporáneas: desigualdades estructurales, movimientos feministas, políticas de igualdad, masculinidades, identidades y diversidad sexual, desde las ciencias sociales, las humanidades y el derecho, con especial atención al espacio iberoamericano.",
-lines:["Género y comunicación","Violencias machistas","Políticas públicas de igualdad","Trabajo y cuidados","Interseccionalidad y feminismos decoloniales","Masculinidades","Diversidad sexual y derechos"],journal:"GENDERCOM · Intracom Journal · Media Ethics Journal"},
+lines:["Género y comunicación","Violencias machistas","Políticas públicas de igualdad","Trabajo y cuidados","Interseccionalidad y feminismos decoloniales","Masculinidades","Diversidad sexual y derechos"],journal:"GENDERCOM · Intracom Journal · Media Ethics Journal",
+committee:[["Asunción Bernárdez Rodal", "Universidad Complutense de Madrid", "España"], ["Paola Panarese", "Sapienza Università di Roma", "Italia"], ["Magdalena Trillo", "Universidad de Granada", "España"], ["Ana Regina Rêgo", "Universidade Federal do Piauí", "Brasil"], ["Pilar Rodríguez Pérez", "Universidad de Deusto", "España"], ["Maria Terezinha Silva", "Universidade Federal de Santa Catarina", "Brasil"], ["Susana Guerrero Salazar", "Universidad de Málaga", "España"]]},
 {id:"ddhh",slug:"coleccion-pensamiento-critico-ddhh",name:"Pensamiento Crítico y Derechos Humanos",cc:"var(--c-ddhh)",short:"Derechos humanos, globalización y los grandes debates contemporáneos desde una mirada crítica.",
 def:"Estudios sobre derechos humanos y globalización, y sobre los grandes debates de las sociedades contemporáneas desde una mirada crítica e interdisciplinar: filosofía política y moral, teoría social, derecho y ética aplicada, ante los desafíos de la democracia y de las transformaciones tecnológicas.",
 lines:["Derechos humanos","Globalización y justicia global","Ética aplicada y ética de la IA","Teoría política y democracia","Migraciones y ciudadanía","Filosofía del derecho","Memoria y justicia transicional"],journal:"DDHHGlobal"},
 {id:"com",slug:"coleccion-estudios-de-comunicacion",name:"Estudios de Comunicación",cc:"var(--c-com)",short:"Periodismo, desinformación, medios digitales e IA en la esfera pública democrática.",
 def:"Investigación sobre los procesos comunicativos y su papel en la construcción de la esfera pública democrática: periodismo, ética de la comunicación, medios digitales, desinformación, comunicación política y el impacto de la inteligencia artificial en los sistemas informativos.",
-lines:["Ética periodística y deontología","Desinformación y verificación","Comunicación política","Plataformas y medios digitales","IA aplicada al periodismo","Alfabetización mediática","Comunicación de la ciencia"],journal:"Intracom Journal · Media Ethics Journal"}];
+lines:["Ética periodística y deontología","Desinformación y verificación","Comunicación política","Plataformas y medios digitales","IA aplicada al periodismo","Alfabetización mediática","Comunicación de la ciencia"],journal:"Intracom Journal · Media Ethics Journal",
+committee:[["Hugo Aznar", "Universidad CEU Cardenal Herrera", "España"], ["Rogério Christofoletti", "Universidade Federal de Santa Catarina", "Brasil"], ["Fernando Oliveira Paulino", "Universidade de Brasília", "Brasil"], ["Carlos Camponez", "Universidade de Coimbra", "Portugal"], ["Madalena Oliveira", "Universidade do Minho", "Portugal"], ["Ruth Rodríguez-Martínez", "Universitat Pompeu Fabra", "España"], ["Ana Regina Rêgo", "Universidade Federal do Piauí", "Brasil"]]}];
 const YES=["Monografías de investigación","Obras colectivas temáticas coordinadas","Tesis doctorales revisadas y adaptadas"];
 const NO=["Actas y memorias de congresos","Comunicaciones sin ampliar","Manuales, guías y libros de texto","Compilaciones sin estudio introductorio"];
 // Los cinco títulos anteriores: datos pendientes. col:"prev" = sin colección.
@@ -37,13 +39,16 @@ panels.innerHTML=COLS.map((c,i)=>`<article class="col-panel" role="tabpanel" id=
 
 <div class="empty"><span class="lab" style="color:${c.cc}">Convocatoria abierta</span><h4>Sé parte del primer número</h4><p>La colección aún no tiene títulos publicados. Aceptamos propuestas de monografías y de obras colectivas coordinadas.</p><div style="display:flex;gap:8px;flex-wrap:wrap"><a class="btn btn-primary btn-sm" href="#convocatorias">Ver convocatoria</a><a class="btn btn-ghost btn-sm" href="#normas">Normas</a></div></div>
 </aside></div>
-<div class="committee"><div class="committee-head"><h4>Dirección y comité científico</h4><span class="mono" style="color:var(--muted)">Nombre · afiliación · país · ORCID</span></div>
+${c.committee?`<div class="committee"><div class="committee-head"><h4>Comité científico internacional</h4><span class="mono" style="color:var(--muted)">Nombre · afiliación · país</span></div>
+<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Nombre</th><th>Afiliación</th><th>País</th></tr></thead><tbody>
+${c.committee.map(([n,a,p])=>`<tr><td>${n}</td><td>${a}</td><td>${p}</td></tr>`).join("")}
+</tbody></table></div></div>`:`<div class="committee"><div class="committee-head"><h4>Dirección y comité científico</h4><span class="mono" style="color:var(--muted)">Nombre · afiliación · país · ORCID</span></div>
 <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Nombre</th><th>Afiliación</th><th>País</th><th>ORCID</th></tr></thead><tbody>
 <tr class="role"><td colspan="4">Dirección de la colección</td></tr>
 <tr><td class="ph-cell" colspan="3">${P("Dirección de "+c.name+": nombre, afiliación, país")}</td><td><span class="orcid"><i></i>0000-0000-0000-0000</span></td></tr>
 <tr class="role"><td colspan="4">Comité científico</td></tr>
 <tr><td class="ph-cell" colspan="3">${P("Comité científico de "+c.name+": nombre, afiliación, país y ORCID de cada miembro")}</td><td><span class="orcid"><i></i>0000-0000-0000-0000</span></td></tr>
-</tbody></table></div></div>
+</tbody></table></div></div>`}
 </article>`).join("");
 function selectCol(id,focus){COLS.forEach(c=>{const on=c.id===id;$("#tab-"+c.id).setAttribute("aria-selected",on);$("#"+c.slug).hidden=!on});if(focus)$("#tab-"+id).focus()}
 $$(".col-tab").forEach((t,i)=>{t.addEventListener("click",()=>selectCol(COLS[i].id));t.addEventListener("keydown",e=>{if(e.key==="ArrowRight"||e.key==="ArrowLeft"){const n=(i+(e.key==="ArrowRight"?1:2))%3;selectCol(COLS[n].id,true)}})});
