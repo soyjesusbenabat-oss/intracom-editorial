@@ -66,7 +66,6 @@ const bookHTML=b=>b.pend?`<a class="book" href="ficha-libro.html"><div class="bk
 :`<a class="book" href="ficha-libro.html"><div class="bk-cover has-img"><img src="${b.img}" alt="Portada de ${b.title}" loading="lazy"></div><div><h4>${b.title}</h4><p class="bk-auth">${b.authors}</p><p class="bk-meta">${b.tipo==="col"?"Obra colectiva · ":""}ES · ${b.year}<br>ISBN ${b.isbn}</p></div></a>`;
 function renderCat(){
  $("#catalogOut").innerHTML=`<div class="book-grid">${BOOKS.filter(b=>b.col==="prev").map(bookHTML).join("")}</div>`;
- collectPend();
 }
 $$("#filters .fseg").forEach(seg=>seg.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;$$("button",seg).forEach(x=>x.setAttribute("aria-pressed",x===b));F[seg.dataset.f]=b.dataset.v;renderCat()}));
 
@@ -109,22 +108,6 @@ ck.addEventListener("click",e=>{const a=e.target.closest("[data-ck]");if(!a)retu
  const val=v==="accept"?(ck.classList.contains("cfg")?($("#ckAn").checked?"all":"tech"):"all"):"tech";
  try{localStorage.setItem(KEY,val)}catch(e){}ck.hidden=true});
 $("#cookieReopen").addEventListener("click",e=>{e.preventDefault();ck.hidden=false;ck.classList.add("cfg")});
-
-/* ---------- pendientes ---------- */
-const fab=$("#pendFab"),pp=$("#pendPanel");
-function collectPend(){
- const seen=new Map();
- $$(".pend[data-pend]").forEach(el=>{if(el.closest("#callsMini"))return;const k=el.dataset.pend;if(!seen.has(k))seen.set(k,el)});
- $("#pendN").textContent=seen.size;
- $("#pendList").innerHTML=[...seen.keys()].map((k,i)=>`<li><a href="#" data-i="${i}">${k}</a></li>`).join("");
- collectPend.els=[...seen.values()];
-}
-fab.addEventListener("click",()=>{const o=pp.hidden;pp.hidden=!o;fab.setAttribute("aria-expanded",o)});
-$("#pendList").addEventListener("click",e=>{const a=e.target.closest("a");if(!a)return;e.preventDefault();const el=collectPend.els[+a.dataset.i];
- const p=el.closest(".col-panel");if(p&&p.hidden){const c=COLS.find(x=>x.slug===p.id);selectCol(c.id)}
- const d=el.closest("details");if(d)d.open=true;
- const r=el.getBoundingClientRect();scrollTo({top:scrollY+r.top-innerHeight/2,behavior:"smooth"});
- el.classList.remove("pend-flash");void el.offsetWidth;el.classList.add("pend-flash")});
 
 renderCat();onScroll();
 addEventListener("load",onScroll);document.fonts&&document.fonts.ready.then(onScroll);
