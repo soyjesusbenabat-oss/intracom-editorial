@@ -236,7 +236,7 @@ table.tbl{width:100%;border-collapse:collapse;font-size:14.5px;min-width:620px}
 .call dd{display:inline;margin:0 0 0 4px}
 @media(max-width:560px){.call{grid-template-columns:1fr}}
 /* ============ REVISTAS ============ */
-.journals{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(18px,2.4vw,30px)}
+.journals{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(18px,2.4vw,30px)}
 .journal{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:var(--ink);transition:transform .35s cubic-bezier(.2,.7,.3,1),box-shadow .35s}
 .journal:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);color:var(--ink)}
 .j-cover{aspect-ratio:3/4;background:repeating-linear-gradient(135deg,color-mix(in srgb,var(--sky) 22%,var(--surface)) 0 11px,color-mix(in srgb,var(--sky) 11%,var(--surface)) 11px 22px);display:grid;place-items:center;border-bottom:1px solid var(--border);position:relative}
@@ -256,6 +256,7 @@ table.tbl{width:100%;border-collapse:collapse;font-size:14.5px;min-width:620px}
 .j-link .aff i{width:10px;height:10px;border-radius:2px;background:var(--cc)}
 .j-link b{font-weight:600;color:var(--ink)}
 .bridge{margin-top:26px;display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;font-size:15px;color:var(--muted);text-align:center}
+@media(max-width:1280px){.journals{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:1120px){.journals{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:900px){.journals{grid-template-columns:1fr;max-width:460px;margin-inline:auto}}
 /* ============ PUBLICAR ============ */
