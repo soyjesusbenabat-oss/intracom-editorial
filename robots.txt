@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ediciones.portalintracom.com/sitemap.xml
